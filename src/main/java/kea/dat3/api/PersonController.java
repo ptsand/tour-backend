@@ -36,7 +36,9 @@ public class PersonController {
 
     private void checkPrivileges(String username, HttpServletRequest request) {
         // Restrict access to the current user if not an ADMIN
+        if(request.getUserPrincipal() == null) throw new UnauthorizedException();
         if(request.isUserInRole("ADMIN")) return;
+        // users are allowed to request their own info
         if (request.getUserPrincipal().getName().equals(username)) return;
         throw new UnauthorizedException();
     }

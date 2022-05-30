@@ -66,11 +66,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
             .antMatchers("/api/auth/**").permitAll()
             .antMatchers("/error").permitAll() //Without this you are not allowed to see security related error responses
-            .antMatchers(HttpMethod.GET, "/api/message/all").permitAll()
-            .antMatchers(HttpMethod.GET, "/index.html").permitAll()
+            .antMatchers(HttpMethod.GET, "/api/riders/**").permitAll()
+            .antMatchers(HttpMethod.GET, "/api/teams/**").permitAll()
+            .antMatchers(HttpMethod.POST, "/api/persons").permitAll() // allow registration
             // All other endpoints are private
-            //.anyRequest().authenticated();
-            .anyRequest().permitAll();  //Disable Security TODO: enable security
+            .anyRequest().authenticated();
+            // .anyRequest().permitAll();  //Disable Security TODO: enable security
     http.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
   }
 

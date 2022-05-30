@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -35,17 +36,17 @@ public class TeamController {
     public List<RiderResponse> getTeamRiders(@PathVariable long id) {
         return teamService.getRiders(id);
     }
-
+    @RolesAllowed({"USER","ADMIN"})
     @PostMapping
     public TeamResponse addTeam(@RequestBody @Valid TeamRequest teamRequest) {
         return teamService.addTeam(teamRequest);
     }
-
+    @RolesAllowed({"USER","ADMIN"})
     @PutMapping("/{id}")
     public TeamResponse updateTeam(@PathVariable long id, @RequestBody @Valid TeamRequest teamRequest) {
         return teamService.updateTeam(id, teamRequest);
     }
-
+    @RolesAllowed({"USER","ADMIN"})
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteTeam(@PathVariable long id) {
         teamService.deleteTeam(id);

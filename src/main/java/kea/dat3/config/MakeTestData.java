@@ -24,9 +24,9 @@ public class MakeTestData implements ApplicationRunner {
     }
 
     public void makeUsers() {
-        Person user = new Person("user@mail.dk","user","test12");
-        Person admin = new Person("admin@mail.dk","admin","test12");
-        Person user_admin = new Person("user-admin@mail.dk","user_admin","test12");
+        Person user = new Person("user@mail.test","user","test12!");
+        Person admin = new Person("admin@mail.test","admin","test12");
+        Person user_admin = new Person("user-admin@mail.test","user_admin","test12");
         user.addRole(Role.USER);
         admin.addRole(Role.ADMIN);
         user_admin.addRole(Role.USER);
@@ -39,7 +39,7 @@ public class MakeTestData implements ApplicationRunner {
 
     private List<Team> makeTeams() {
         List<Team> teams = new ArrayList<>();
-        for (int i = 1; i<6; i++) {
+        for (int i = 2; i<6; i++) {
             teams.add(new Team(new TeamRequest("Team"+i)));
         }
         return teams;
@@ -48,7 +48,7 @@ public class MakeTestData implements ApplicationRunner {
     private void makeRiders(List<Team> teams) {
         teams.stream().forEach(team ->{
             for (int i = 1; i<5; i++) {
-                team.addRider(new Rider(new RiderRequest(team.getId(),"RiderName"+i)));
+                team.addRider(new Rider(new RiderRequest(team.getId(),"Name"+i,"country"+i,i*10000)));
             }
         });
         teamRepository.saveAll(teams);

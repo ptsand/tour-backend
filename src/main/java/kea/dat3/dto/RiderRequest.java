@@ -15,9 +15,11 @@ import javax.validation.constraints.NotNull;
 public class RiderRequest {
 
     @NotNull
-    private long teamId;
-
+    private Long teamId;
     @NotBlank
     private String name;
+    @NotBlank
+    private String country;
+    private int totalTimeMs;
 
 }

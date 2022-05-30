@@ -30,7 +30,7 @@ public class PersonService {
         }
 
         Person newPerson = new Person(body);
-        newPerson.addRole(Role.USER);
+        newPerson.addRole(Role.USER); // default role
         personRepository.save(newPerson);
         return new PersonResponse(newPerson);
     }

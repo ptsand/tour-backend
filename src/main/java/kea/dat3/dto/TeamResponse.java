@@ -12,8 +12,10 @@ import lombok.Setter;
 @AllArgsConstructor
 public class TeamResponse {
 
+    private long id;
     private String name;
     public TeamResponse(Team team) {
+        this.id = team.getId();
         this.name = team.getName();
     }
 }

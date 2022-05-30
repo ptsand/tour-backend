@@ -12,17 +12,14 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @Getter
 @Setter
-
 public class PersonResponse {
     String username;
-    List<String> roleNames;
+    List<String> roles;
     String email;
-
-    String phoneNumber;
 
     public PersonResponse(Person person) {
         this.username = person.getUsername();
-        this.roleNames = person.getRoles().stream().map(role -> role.toString()).collect(Collectors.toList());
+        this.roles = person.getRoles().stream().map(role -> role.toString()).collect(Collectors.toList());
         this.email = person.getEmail();
     }
 

@@ -16,14 +16,20 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class Rider {
 
+    // TODO: check constraints
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(nullable = false)
     private String name;
 
+    @Column(nullable = false)
+    private String country;
+
     private int mountainPoints;
     private int sprintPoints;
+    private int totalTimeMs;
 
     @ManyToOne
     private Team team;
@@ -35,6 +41,8 @@ public class Rider {
 
     public Rider(RiderRequest riderRequest) {
         this.name = riderRequest.getName();
+        this.country = riderRequest.getCountry();
+        this.totalTimeMs = riderRequest.getTotalTimeMs();
     }
 
     public void update(RiderRequest riderRequest) {
