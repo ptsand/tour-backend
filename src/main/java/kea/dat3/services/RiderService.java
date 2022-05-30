@@ -35,6 +35,11 @@ public class RiderService {
         return new RiderResponse(riderRepository.findById(id).orElseThrow(() -> new RiderNotFoundException(id)));
     }
 
+    public List<RiderResponse> findByName(String name) {
+        List<Rider> riders = riderRepository.findByNameContainingIgnoreCase(name);
+        return riders.stream().map(RiderResponse::new).collect(Collectors.toList());
+    }
+
     public RiderResponse addRider(RiderRequest riderRequest) {
         long teamId = riderRequest.getTeamId();
         Team team = teamRepository.findById(teamId).orElseThrow(()->new TeamNotFoundException(teamId));

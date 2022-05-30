@@ -26,6 +26,11 @@ public class RiderController {
         return riderService.findAll(pageable);
     }
 
+    @GetMapping("/search/{name}")
+    public List<RiderResponse> getRidersByName(@PathVariable String name){
+        return riderService.findByName(name);
+    }
+
     @GetMapping("/{id}")
     public RiderResponse getRider(@PathVariable long id) {
         return riderService.findById(id);
