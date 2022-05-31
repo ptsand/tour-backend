@@ -39,7 +39,7 @@ public class MakeTestData implements ApplicationRunner {
 
     private List<Team> makeTeams() {
         List<Team> teams = new ArrayList<>();
-        for (int i = 2; i<6; i++) {
+        for (int i = 1; i<6; i++) {
             teams.add(new Team(new TeamRequest("Team"+i)));
         }
         return teams;
