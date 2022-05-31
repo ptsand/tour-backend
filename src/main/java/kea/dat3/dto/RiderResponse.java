@@ -17,7 +17,6 @@ public class RiderResponse {
     private String country;
     private String teamName;
     private long teamId;
-
     private int totalTimeMs;
     private int mountainPoints;
     private int sprintPoints;

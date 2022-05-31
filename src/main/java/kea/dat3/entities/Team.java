@@ -45,4 +45,8 @@ public class Team {
         this.riders.add(rider);
         rider.setTeam(this);
     }
+
+    public void removeRider(Rider rider) {
+        this.riders.remove(rider);
+    }
 }

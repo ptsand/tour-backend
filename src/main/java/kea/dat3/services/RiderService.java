@@ -51,6 +51,15 @@ public class RiderService {
 
     public RiderResponse updateRider(long id, RiderRequest riderRequest) {
         Rider rider = riderRepository.findById(id).orElseThrow(() -> new RiderNotFoundException(id));
+        long oldTeamId = rider.getTeam().getId();
+        long newTeamId = riderRequest.getTeamId();
+        if (oldTeamId != newTeamId) { // move rider to new team
+            Team oldTeam = teamRepository.findById(oldTeamId).orElseThrow(() -> new TeamNotFoundException(oldTeamId));
+            Team newTeam = teamRepository.findById(newTeamId).orElseThrow(() -> new TeamNotFoundException(newTeamId));
+            oldTeam.removeRider(rider);
+            newTeam.addRider(rider);
+            teamRepository.saveAll(List.of(oldTeam,newTeam));
+        }
         rider.update(riderRequest);
         return new RiderResponse(riderRepository.save(rider));
     }

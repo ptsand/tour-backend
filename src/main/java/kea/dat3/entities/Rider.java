@@ -43,9 +43,15 @@ public class Rider {
         this.name = riderRequest.getName();
         this.country = riderRequest.getCountry();
         this.totalTimeMs = riderRequest.getTotalTimeMs();
+        this.mountainPoints = riderRequest.getMountainPoints();
+        this.sprintPoints = riderRequest.getSprintPoints();
     }
 
     public void update(RiderRequest riderRequest) {
         this.name = riderRequest.getName();
+        this.country = riderRequest.getCountry();
+        this.totalTimeMs = riderRequest.getTotalTimeMs();
+        this.mountainPoints = riderRequest.getMountainPoints();
+        this.sprintPoints = riderRequest.getSprintPoints();
     }
 }

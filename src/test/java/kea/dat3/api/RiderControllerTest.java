@@ -25,7 +25,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -59,14 +58,14 @@ public class RiderControllerTest {
         user.addRole(Role.USER);
         personRepository.save(user);
         t = teamRepository.save(new Team(new TeamRequest("team easy on")));
-        r = new Rider(new RiderRequest(t.getId(), "Bobby", "Denmark",34500000));
+        r = new Rider(new RiderRequest(t.getId(), "Bobby", "Denmark",34500000,2,1));
         t.addRider(r); // this sets team in rider too
         teamRepository.save(t); // cascades
     }
 
     @Test
     public void testAddRider() throws Exception {
-        RiderRequest riderRequest = new RiderRequest(t.getId(),"newRider","Denmark",4234234);
+        RiderRequest riderRequest = new RiderRequest(t.getId(),"newRider","Denmark",4234234,3,4);
         String jwt = login(loginRequest);
         mockMvc.perform(MockMvcRequestBuilders.post("/api/riders")
                         .contentType("application/json")

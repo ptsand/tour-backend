@@ -48,7 +48,7 @@ public class MakeTestData implements ApplicationRunner {
     private void makeRiders(List<Team> teams) {
         teams.stream().forEach(team ->{
             for (int i = 1; i<5; i++) {
-                team.addRider(new Rider(new RiderRequest(team.getId(),"Name"+i,"country"+i,i*10000)));
+                team.addRider(new Rider(new RiderRequest(team.getId(),"Name"+i,"country"+i,i*3600000,i-1,i+1)));
             }
         });
         teamRepository.saveAll(teams);

@@ -21,5 +21,7 @@ public class RiderRequest {
     @NotBlank
     private String country;
     private int totalTimeMs;
+    private int mountainPoints;
+    private int sprintPoints;
 
 }
