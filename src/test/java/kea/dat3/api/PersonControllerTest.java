@@ -71,6 +71,28 @@ class PersonControllerTest {
     }
 
     @Test
+    void testUserCannotGetAdminInfo() throws Exception {
+        LoginRequest request = loginReqs.get(Role.USER);
+        String jwt = login(request);
+        mockMvc.perform(MockMvcRequestBuilders
+                        .get(String.format("/api/persons/%s","admin"))
+                        .accept(MediaType.APPLICATION_JSON)
+                        .header("Authorization","Bearer " + jwt))
+                .andExpect(status().isForbidden());
+    }
+
+    @Test
+    void testAdminHasAccess() throws Exception {
+        LoginRequest request = loginReqs.get(Role.ADMIN);
+        String jwt = login(request);
+        mockMvc.perform(MockMvcRequestBuilders
+                        .get(String.format("/api/persons/%s","user"))
+                        .accept(MediaType.APPLICATION_JSON)
+                        .header("Authorization","Bearer " + jwt))
+                .andExpect(status().isOk());
+    }
+
+    @Test
     void testPersonNotFound() throws Exception {
         // request a nonexistent person and verify HTTP Status and error response
         String jwt = login(loginReqs.get(Role.ADMIN));

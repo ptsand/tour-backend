@@ -21,8 +21,8 @@ import javax.servlet.http.HttpServletResponse;
 @EnableWebSecurity(debug = false)
 @EnableGlobalMethodSecurity(
         //securedEnabled = true,
-        jsr250Enabled = true // enables @RolesAllowed annotation.
-        //prePostEnabled = true
+        jsr250Enabled = true, // enables @RolesAllowed annotation.
+        prePostEnabled = true
 )
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
