@@ -16,8 +16,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class Rider {
 
-    // TODO: check constraints
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

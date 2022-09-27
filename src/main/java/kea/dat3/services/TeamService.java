@@ -9,6 +9,7 @@ import kea.dat3.repositories.TeamRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,7 +24,7 @@ public class TeamService {
 
     public List<TeamResponse> findAll(Pageable pageable) {
         Page<Team> teams = teamRepository.findAll(pageable);
-        return teams.stream().map(TeamResponse::new).collect(Collectors.toList());
+        return teams.stream().map(TeamResponse::new).toList();
     }
 
     public TeamResponse findById(long id) {

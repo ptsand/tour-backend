@@ -1,7 +1,6 @@
 package kea.dat3.error;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.web.server.ResponseStatusException;
 
 public class PersonNotFoundException extends Client4xxException {
 

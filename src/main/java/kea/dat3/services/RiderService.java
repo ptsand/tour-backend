@@ -28,7 +28,7 @@ public class RiderService {
 
     public List<RiderResponse> findAll(Pageable pageable) {
         Page<Rider> riders = riderRepository.findAll(pageable);
-        return riders.stream().map(RiderResponse::new).collect(Collectors.toList());
+        return riders.stream().map(RiderResponse::new).toList();
     }
 
     public RiderResponse findById(long id) {

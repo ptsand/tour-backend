@@ -1,7 +1,7 @@
 package kea.dat3.security;
 
-import kea.dat3.repositories.PersonRepository;
 import kea.dat3.entities.Person;
+import kea.dat3.repositories.PersonRepository;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

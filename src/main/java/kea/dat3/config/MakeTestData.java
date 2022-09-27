@@ -2,12 +2,17 @@ package kea.dat3.config;
 
 import kea.dat3.dto.RiderRequest;
 import kea.dat3.dto.TeamRequest;
-import kea.dat3.entities.*;
-import kea.dat3.repositories.*;
+import kea.dat3.entities.Person;
+import kea.dat3.entities.Rider;
+import kea.dat3.entities.Role;
+import kea.dat3.entities.Team;
+import kea.dat3.repositories.PersonRepository;
+import kea.dat3.repositories.TeamRepository;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Controller;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,15 +31,15 @@ public class MakeTestData implements ApplicationRunner {
     public void makeUsers() {
         Person user = new Person("user@mail.test","user","test12!");
         Person admin = new Person("admin@mail.test","admin","test12");
-        Person user_admin = new Person("user-admin@mail.test","user_admin","test12");
+        Person userAdmin = new Person("user-admin@mail.test","user_admin","test12");
         user.addRole(Role.USER);
         admin.addRole(Role.ADMIN);
-        user_admin.addRole(Role.USER);
-        user_admin.addRole(Role.ADMIN);
+        userAdmin.addRole(Role.USER);
+        userAdmin.addRole(Role.ADMIN);
         personRepository.save(user);
         personRepository.save(admin);
-        personRepository.save(user_admin);
-        System.out.println("CREATED " + personRepository.count() + " TEST PERSONS");
+        personRepository.save(userAdmin);
+        // System.out.println("CREATED " + personRepository.count() + " TEST PERSONS");
     }
 
     private List<Team> makeTeams() {

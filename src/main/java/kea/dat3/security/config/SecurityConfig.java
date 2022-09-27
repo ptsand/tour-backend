@@ -1,6 +1,5 @@
 package kea.dat3.security.config;
 
-import kea.dat3.repositories.PersonRepository;
 import kea.dat3.security.UserDetailsServiceImp;
 import kea.dat3.security.UserWithPassword;
 import kea.dat3.security.jwt.JwtTokenFilter;

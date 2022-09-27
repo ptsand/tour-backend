@@ -2,13 +2,14 @@ package kea.dat3.services;
 
 import kea.dat3.dto.PersonRequest;
 import kea.dat3.dto.PersonResponse;
-import kea.dat3.error.PersonNotFoundException;
-import kea.dat3.repositories.PersonRepository;
 import kea.dat3.entities.Person;
 import kea.dat3.entities.Role;
+import kea.dat3.error.PersonNotFoundException;
+import kea.dat3.repositories.PersonRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+
 import java.util.List;
 
 @Service
